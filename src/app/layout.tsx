@@ -12,10 +12,9 @@ export default function RootLayout({
     <html lang="tr">
       <body className="antialiased bg-white text-slate-900">
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main>{children}</main>
         <WhatsappButton />
 
-        {/* 🔔 Sonner burada */}
         <Toaster
           position="top-right"
           richColors

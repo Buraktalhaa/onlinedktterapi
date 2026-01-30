@@ -1,168 +1,152 @@
 "use client";
 
 import { useState } from "react";
+import { 
+  Mail, MessageCircle, Send, 
+  Clock, Sparkles, Shield 
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  MessageSquare,
-  Phone,
-  User,
-  Mail,
-  MessageCircle,
-} from "lucide-react";
 import { toast } from "sonner";
+import { phoneNumber } from "@/data/contact";
+import { PageSection } from "@/components/layout/PageSection";
 
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
 
-  const whatsappNumber = "905071808810";
-  const whatsappMessage = encodeURIComponent(
-    "Merhaba Feyza Hanım, online terapi süreci hakkında bilgi almak istiyorum."
-  );
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
+    
     const formData = new FormData(e.currentTarget);
-
-    // 🛑 Honeypot (bot koruması)
-    if (formData.get("company")) {
-      setLoading(false);
-      return;
-    }
-
-    const data = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+    if (formData.get("company")) return setLoading(false);
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(Object.fromEntries(formData)),
       });
 
-      const result = await response.json();
-
-      if (response.ok && !result.error) {
-        toast.success("Mesajınız iletildi 🎉", {
-          description: "En kısa sürede sizinle iletişime geçilecektir.",
-        });
-
+      if (response.ok) {
+        toast.success("Mesajınız iletildi! 🎉");
         (e.target as HTMLFormElement).reset();
       } else {
-        toast.error("Bir hata oluştu", {
-          description: "Lütfen daha sonra tekrar deneyin.",
-        });
+        toast.error("Bir hata oluştu.");
       }
-    } catch (error) {
-      console.error("İletişim formu hatası:", error);
-      toast.error("Bağlantı hatası oluştu");
+    } catch {
+      toast.error("Bağlantı hatası.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section
-      id="iletisim"
-      className="relative overflow-hidden bg-linear-to-b from-slate-50 to-white py-28"
-    >
-      {/* Arka plan blur */}
-      <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-125 w-125 rounded-full bg-blue-400/20 blur-3xl" />
+    <PageSection id="iletisim" variant="gray" className="py-16 relative overflow-hidden">
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-400/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-blue-400/10 blur-[120px] rounded-full" />
 
-      <div className="relative container mx-auto max-w-6xl px-4">
-        <div className="grid gap-20 md:grid-cols-2 items-start">
+      <div className="container mx-auto relative z-10 px-4">
+        {/* Header: mb-8'e düşürüldü */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
+            <Sparkles className="size-3.5" />
+            İletişime Geçin
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
+            Online Terapi İçin <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-500 to-blue-600">İlk Adımı Atın</span>
+          </h2>
+          <p className="text-base text-slate-600">Ücretsiz ön görüşme için formu doldurun veya WhatsApp&apos;tan yazın.</p>
+        </div>
 
-          {/* SOL – METİN */}
-          <div className="space-y-10">
-            <div>
-              <span className="inline-block mb-4 rounded-full bg-blue-100 px-4 py-1 text-sm font-semibold text-blue-700">
-                İlk Adımı Atın
-              </span>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          
+          {/* SOL: Kartlar daha küçük ve kompakt */}
+          <div className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-50 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-linear-to-br from-teal-500 to-blue-600 flex items-center justify-center mb-3 shadow-md shadow-blue-100">
+                  <Mail className="size-5 text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 text-sm">E-posta</h4>
+                <p className="text-xs text-slate-500 break-all">feyza.sahan@email.com</p>
+              </div>
 
-              <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 mb-6">
-                Ücretsiz Ön Görüşme
-              </h2>
-
-              <p className="text-lg leading-relaxed text-slate-600 max-w-xl">
-                Online terapi süreci hakkında merak ettiklerinizi paylaşın.
-                Size en uygun yol haritasını birlikte belirleyelim.
-              </p>
+              <a href={`https://wa.me/${phoneNumber}`} target="_blank" className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-50 hover:bg-slate-50 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#25D366] flex items-center justify-center mb-3 shadow-md shadow-green-100">
+                  <MessageCircle className="size-5 text-white" />
+                </div>
+                <h4 className="font-bold text-slate-900 text-sm">WhatsApp</h4>
+                <p className="text-xs text-green-600 font-bold">Hemen Yazın</p>
+              </a>
             </div>
 
-            {/* WhatsApp */}
-            <a
-              href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-5 rounded-3xl border border-green-200 bg-white/80 p-6 shadow-lg backdrop-blur hover:-translate-y-1 transition-all"
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg">
-                <MessageCircle className="h-7 w-7" />
-              </div>
-              <div>
-                <div className="font-bold text-slate-900">
-                  WhatsApp ile Yazın
-                </div>
-                <div className="text-sm text-green-700">
-                  Genellikle aynı gün dönüş yapılır
-                </div>
-              </div>
-            </a>
+            {/* Çalışma Saatleri: p-8'den p-6'ya düştü */}
+            <div className="bg-slate-900 rounded-[2rem] p-6 text-white shadow-xl relative overflow-hidden">
+               <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                 <Clock className="size-4 text-teal-400" />
+                 Çalışma Saatleri
+               </h3>
+               <div className="space-y-2.5 text-sm">
+                 {[
+                   { days: "Pazartesi - Cuma", hours: "09:00 - 18:00" },
+                   { days: "Cumartesi", hours: "10:00 - 15:00" },
+                   { days: "Pazar", hours: "Kapalı", isClosed: true }
+                 ].map((item, i) => (
+                   <div key={i} className="flex justify-between items-center border-b border-slate-800 pb-2 last:border-0">
+                     <span className="text-slate-400 font-medium">{item.days}</span>
+                     <span className={`font-bold ${item.isClosed ? 'text-red-400' : 'text-teal-400'}`}>{item.hours}</span>
+                   </div>
+                 ))}
+               </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
+               <Shield className="size-6 text-blue-600 shrink-0" />
+               <p className="text-[11px] text-blue-800 font-semibold leading-snug">
+                 Tüm bilgiler KVKK kapsamında gizli tutulur.
+               </p>
+            </div>
           </div>
 
-          {/* SAĞ – FORM */}
-          <div className="relative rounded-[2.8rem] border border-white/60 bg-white/70 p-10 shadow-2xl backdrop-blur-xl">
-            <h3 className="mb-8 text-2xl font-bold text-slate-900">
-              Bilgi Formu
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Honeypot */}
+          {/* SAĞ: Form - p-12'den p-8'e düştü, gap-5'ten gap-4'e düştü */}
+          <div className="bg-white rounded-[2.5rem] p-7 md:p-8 shadow-2xl shadow-slate-200/60 border border-slate-50">
+            <h3 className="text-xl font-bold text-slate-900 mb-6">Bilgi Formu</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input type="text" name="company" className="hidden" />
-
-              {[
-                { icon: User, name: "name", placeholder: "Adınız Soyadınız" },
-                { icon: Phone, name: "phone", placeholder: "Telefon Numaranız", type: "tel" },
-                { icon: Mail, name: "email", placeholder: "E-posta Adresiniz", type: "email" },
-              ].map(({ icon: Icon, ...field }, i) => (
-                <div key={i} className="relative">
-                  <Icon className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-                  <Input
-                    {...field}
-                    required
-                    className="h-16 rounded-2xl border border-slate-200 bg-white pl-14 text-base shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  />
+              
+              <div className="grid gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700 ml-1">Adınız Soyadınız</label>
+                  <Input name="name" placeholder="Ad Soyad" className="h-12 rounded-xl bg-slate-50 border-slate-100 text-sm" required />
                 </div>
-              ))}
+                
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 ml-1">E-posta</label>
+                    <Input name="email" type="email" placeholder="E-posta" className="h-12 rounded-xl bg-slate-50 border-slate-100 text-sm" required />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 ml-1">Telefon</label>
+                    <Input name="phone" type="tel" placeholder="05XX..." className="h-12 rounded-xl bg-slate-50 border-slate-100 text-sm" required />
+                  </div>
+                </div>
 
-              <div className="relative">
-                <MessageSquare className="absolute left-5 top-5 h-5 w-5 text-slate-400" />
-                <Textarea
-                  name="message"
-                  placeholder="Hangi konuda destek istiyorsunuz?"
-                  className="min-h-35 rounded-2xl border border-slate-200 bg-white pl-14 pt-4 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                />
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700 ml-1">Mesajınız</label>
+                  <Textarea name="message" placeholder="Destek almak istediğiniz konu..." className="min-h-25 rounded-xl bg-slate-50 border-slate-100 text-sm p-3" required />
+                </div>
               </div>
 
-              <Button
-                type="submit"
-                disabled={loading}
-                className="mt-6 h-16 w-full rounded-2xl bg-linear-to-r from-blue-600 to-indigo-600 text-lg font-bold shadow-xl shadow-blue-200 hover:scale-[1.02] transition"
-              >
-                {loading ? "Gönderiliyor..." : "Ücretsiz Ön Görüşme Talep Et"}
+              <Button type="submit" disabled={loading} className="w-full h-14 rounded-xl bg-linear-to-r from-teal-500 to-blue-600 text-white font-bold text-base shadow-lg shadow-blue-500/20 active:scale-95 transition-all cursor-pointer">
+                {loading ? "Gönderiliyor..." : "Mesajı Gönder"}
+                <Send className="size-4 ml-2" />
               </Button>
             </form>
           </div>
         </div>
       </div>
-    </section>
-
+    </PageSection>
   );
 }
