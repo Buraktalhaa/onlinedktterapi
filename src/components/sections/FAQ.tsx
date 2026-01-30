@@ -7,12 +7,13 @@ import {
 } from '@/components/ui/accordion';
 import { faqs } from '@/data/faq';
 import { HelpCircle, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button'; // Button bileşenini dahil ettik
-import { scrollToId } from "@/lib/scrollTo"; // Scroll fonksiyonunu dahil ettik
+import { Button } from '@/components/ui/button';
+import { scrollToId } from "@/lib/scrollTo"; 
+import { PageSection } from '../layout/PageSection';
 
 export function FAQ() {
   return (
-    <section id="sss" className="py-20 px-6 lg:px-8 bg-white">
+    <PageSection id="sss" className="py-8 px-6 lg:px-8" variant='white'>
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -77,6 +78,6 @@ export function FAQ() {
           </div>
         </div>
       </div>
-    </section>
+    </PageSection>
   );
 }

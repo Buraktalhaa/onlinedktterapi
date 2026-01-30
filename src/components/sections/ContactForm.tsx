@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { phoneNumber } from "@/data/contact";
+import { emailAddress, phoneNumber } from "@/data/contact";
 import { PageSection } from "@/components/layout/PageSection";
 
 export function ContactForm() {
@@ -70,7 +70,7 @@ export function ContactForm() {
                   <Mail className="size-5 text-white" />
                 </div>
                 <h4 className="font-bold text-slate-900 text-sm">E-posta</h4>
-                <p className="text-xs text-slate-500 break-all">feyza.sahan@email.com</p>
+                <p className="text-xs text-slate-500 break-all">{emailAddress}</p>
               </div>
 
               <a href={`https://wa.me/${phoneNumber}`} target="_blank" className="bg-white rounded-2xl p-5 shadow-lg shadow-slate-200/50 border border-slate-50 hover:bg-slate-50 transition-all">

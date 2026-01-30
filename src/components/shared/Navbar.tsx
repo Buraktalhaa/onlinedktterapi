@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Calendar, Menu, X } from "lucide-react";
 import { scrollToId } from "@/lib/scrollTo";
@@ -28,22 +27,24 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full py-4 transition-all shadow-md",
-        // Scrolled efektini kaldırdık, FAQ'daki degradeyi sabitledik
         "bg-linear-to-r from-teal-500 to-blue-600"
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* LOGO */}
-        <Link href="/" className="group flex flex-col leading-tight">
-          <span className="text-2xl font-extrabold tracking-tight text-white">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="group flex flex-col leading-tight text-left cursor-pointer outline-none"
+        >
+          <span className="text-2xl font-extrabold tracking-tight text-white transition group-hover:text-teal-50">
             Feyza Şahan
           </span>
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-teal-100">
             Dil ve Konuşma Terapisti
           </span>
-        </Link>
+        </button>
 
-        {/* DESKTOP MENU */}
+        {/* DESKTOP MENU - lg seviyesine kadar gizli kalır */}
         <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-white/90">
           {navItems.map((item) => (
             <button
@@ -57,30 +58,30 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* DESKTOP CTA */}
-        <div className="hidden md:flex">
+        {/* DESKTOP CTA - md yerine lg yaptık, tablet modunda butonu hizaladık */}
+        <div className="hidden lg:flex items-center">
           <Button
             variant="primary"
             onClick={() => goTo("iletisim")}
-            className="h-14 rounded-2xl text-lg font-bold cursor-pointer"
+            className="h-12 rounded-full px-6 font-bold shadow-xl transition-all active:scale-95 cursor-pointer"
           >
             Ücretsiz Ön Görüşme
           </Button>
-
         </div>
 
-        {/* MOBILE BUTTON */}
+        {/* MOBILE BUTTON - md:hidden yerine lg:hidden yaptık (Tablette artık görünecek) */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden rounded-xl p-2 text-white hover:bg-white/10 transition cursor-pointer"
+          className="lg:hidden rounded-xl p-2 text-white hover:bg-white/10 transition cursor-pointer"
+          aria-label="Menüyü Aç"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE/TABLET MENU - md:hidden yerine lg:hidden yaptık */}
       {open && (
-        <div className="md:hidden bg-teal-600 border-t border-white/10 animate-in slide-in-from-top duration-300">
+        <div className="lg:hidden bg-teal-600 border-t border-white/10 animate-in slide-in-from-top duration-300">
           <nav className="flex flex-col gap-1 px-6 py-8 text-base font-semibold text-white">
             {navItems.map((item) => (
               <button
@@ -94,12 +95,11 @@ export function Navbar() {
             <Button
               variant="primaryLight"
               onClick={() => goTo("iletisim")}
-              className="rounded-full px-6 font-bold active:scale-95"
+              className="mt-6 h-14 rounded-2xl bg-white text-teal-600 font-bold text-lg active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Calendar className="h-4 w-4 mr-2" />
+              <Calendar className="h-5 w-5" />
               Ücretsiz Ön Görüşme
             </Button>
-
           </nav>
         </div>
       )}

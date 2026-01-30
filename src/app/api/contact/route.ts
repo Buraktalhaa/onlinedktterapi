@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { emailAddress } from "@/data/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -23,8 +24,8 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "İletişim Formu <onboarding@resend.dev>", 
-      to: ["talha45879@gmail.com"],
-      replyTo: email, // ✅ DOĞRU
+      to: [emailAddress],
+      replyTo: email,
       subject: `Yeni Ön Görüşme Talebi - ${name}`,
       text: `
 Yeni bir ön görüşme talebi geldi.

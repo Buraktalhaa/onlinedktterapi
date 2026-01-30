@@ -9,7 +9,7 @@ import { scrollToId } from "@/lib/scrollTo";
 
 export function Hero() {
   return (
-    <PageSection variant="white" className="pt-10 pb-20 md:pb-28">
+    <PageSection variant="white" className="pt-8 pb-16 md:pb-28">
       {/* Arka plan dekoru */}
       <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 opacity-25 blur-3xl">
         <div className="h-96 w-xl rounded-full bg-linear-to-r from-teal-400 to-blue-400" />
