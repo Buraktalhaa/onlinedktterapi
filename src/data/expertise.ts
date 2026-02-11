@@ -1,23 +1,24 @@
 import {
-  Waves,          // Kekemelik (Akıcılık simgesi)
-  Sparkles,       // Gecikmiş Dil (Gelişim/Işıltı)
-  Mic2,           // Artikülasyon (Ses üretimi)
-  Puzzle,         // Otizm (Sosyal etkileşim/Parçaları birleştirme)
-  Activity,       // Afazi (Nörolojik aktivite)
-  HeartHandshake, // Ebeveyn Danışmanlığı (Destek ve Güven)
+  Waves,
+  Sparkles,
+  Mic2,
+  Puzzle,
+  HeartHandshake,
+  Brain,
 } from "lucide-react";
+
+// Çalışma Alanlarım
+export const expertise = [
+  "Gecikmiş Dil ve Konuşma",
+  "Artikülasyon ve Fonolojik Bozukluklar",
+  "Akıcılık Bozuklukları (Kekemelik)",
+  "Otizm Spektrum Bozukluğu",
+  "Aile Danışmanlığı ve Ev Programları",
+] as const; 
 
 export const services = [
   {
-    title: "Kekemelik Terapisi",
-    description:
-      "Çocuk ve yetişkinlerde akıcılık bozukluklarına yönelik güncel ve kanıta dayalı terapi yöntemleri.",
-    icon: Waves, 
-    color: "bg-amber-50",
-    iconColor: "text-amber-600",
-  },
-  {
-    title: "Gecikmiş Dil ve Konuşma",
+    title: expertise[0], 
     description:
       "Konuşmaya başlamada gecikme yaşayan çocuklarda dil becerilerini destekleyici oyun temelli süreçler.",
     icon: Sparkles,
@@ -25,35 +26,43 @@ export const services = [
     iconColor: "text-blue-600",
   },
   {
-    title: "Artikülasyon Bozuklukları",
+    title: expertise[1], 
     description:
-      "Seslerin (R, S, K gibi) yanlış üretilmesi durumunda doğru ses üretimini hedefleyen çalışmalar.",
+      "Seslerin doğru üretilmesi ve ses sistemindeki bozukluklara yönelik kanıta dayalı değerlendirme ve terapi.",
     icon: Mic2,
     color: "bg-emerald-50",
     iconColor: "text-emerald-600",
   },
   {
-    title: "Otizmde İletişim",
+    title: expertise[2],
     description:
-      "Otizm spektrumundaki bireylerde sosyal etkileşim ve iletişim becerilerinin geliştirilmesi.",
+      "Kekemelik ve hızlı bozuk konuşma gibi akıcılık sorunlarına yönelik güncel terapi yaklaşımları.",
+    icon: Waves,
+    color: "bg-amber-50",
+    iconColor: "text-amber-600",
+  },
+  {
+    title: expertise[3],
+    description:
+      "Otizm spektrumundaki bireylerde sosyal etkileşim ve iletişim becerilerinin oyun yoluyla desteklenmesi.",
     icon: Puzzle,
     color: "bg-indigo-50",
     iconColor: "text-indigo-600",
   },
   {
-    title: "Afazi ve Nörojenik Bozukluklar",
+    title: expertise[4],
     description:
-      "Beyin hasarı sonrası oluşan konuşma ve dil kayıplarında rehabilitasyon süreçleri.",
-    icon: Activity,
-    color: "bg-rose-50",
-    iconColor: "text-rose-600",
-  },
-  {
-    title: "Ebeveyn Danışmanlığı",
-    description:
-      "Terapi sürecinin evde desteklenmesi için ailelere yönelik rehberlik ve eğitim programları.",
+      "Terapi sürecinin evde desteklenmesi için ailelere yönelik kapsamlı rehberlik ve eğitim süreçleri.",
     icon: HeartHandshake,
     color: "bg-teal-50",
     iconColor: "text-teal-600",
+  },
+  {
+    title: "Afazi ve Nörojenik Bozukluklar",
+    description:
+      "Beyin hasarı sonrası oluşan konuşma ve dil kayıplarında nörolojik temelli rehabilitasyon.",
+    icon: Brain,
+    color: "bg-rose-50",
+    iconColor: "text-rose-600",
   },
 ] as const;

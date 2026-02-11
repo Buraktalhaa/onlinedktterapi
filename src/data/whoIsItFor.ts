@@ -1,31 +1,29 @@
-import { Baby, GraduationCap, Users } from "lucide-react";
+import { Baby, GraduationCap, Users2 } from "lucide-react";
 
-export const groups = [
-  {
-    title: "Çocuklar",
-    description:
-      "Dil gelişimi, konuşma sesi bozuklukları ve akıcılık problemleri yaşayan çocuklar için uygundur.",
-    icon: Baby,
-  },
-  {
-    title: "Ergenler",
-    description:
-      "Akademik ve sosyal yaşamda iletişim güçlüğü yaşayan ergen bireyler için destekleyici bir seçenektir.",
-    icon: GraduationCap,
-  },
-  {
-    title: "Yetişkinler",
-    description:
-      "Kekemelik, ses bozuklukları veya nörolojik kökenli iletişim sorunları yaşayan yetişkinler için uygundur.",
-    icon: Users,
-  },
-] as const;
-
-export const conditions = [
-  "Kekemelik ve hızlı-bozuk konuşma",
-  "Gecikmiş dil ve konuşma",
-  "Sesletim (artikülasyon) bozuklukları",
-  "Otizm spektrumunda iletişim güçlükleri",
-  "Afazi ve nörolojik konuşma bozuklukları",
-  "Yoğun program nedeniyle yüz yüze terapiye zaman ayıramama",
-] as const;
+export const universalApproach = {
+  title: "İletişimin Yaşı Yoktur",
+  mainDescription: "Online terapi; ilk kelimelerini bekleyen bir çocuktan, sosyal hayata hazırlanan bir gence veya yaşam kalitesini korumak isteyen bir yetişkine kadar herkes için aynı bilimsel titizlikle uygulanır.",
+  ctaMessage: "Küçük bir adımdan büyük bir değişime: Her yaşta yanınızdayız.",
+  
+  // Özellikler yerine "Yaşam Evreleri" mantığına geçiyoruz
+  segments: [
+    {
+      title: "Çocukluk Dönemi",
+      desc: "2-12 yaş arası çocuklarda oyun temelli, merak uyandıran ve eğlenceli seanslarla dil gelişimini destekliyoruz.",
+      icon: Baby,
+      badge: "Gelişim Odaklı"
+    },
+    {
+      title: "Gençlik & Ergenlik",
+      desc: "Sosyal çevre ve okul hayatında kendini daha özgüvenli ifade etmek isteyen gençler için modern yaklaşımlar sunuyoruz.",
+      icon: GraduationCap,
+      badge: "Özgüven Odaklı"
+    },
+    {
+      title: "Yetişkinlik Dönemi",
+      desc: "Kekemelikten nörolojik rehabilitasyona kadar, günlük ve iş hayatında iletişimi güçlendirmeyi hedefliyoruz.",
+      icon: Users2,
+      badge: "Çözüm Odaklı"
+    }
+  ]
+};
