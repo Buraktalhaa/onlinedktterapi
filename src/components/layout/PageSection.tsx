@@ -23,7 +23,7 @@ export function PageSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden py-24 ${variants[variant]} ${className ?? ""}`}
+      className={`relative overflow-hidden py-10 ${variants[variant]} ${className ?? ""}`}
     >
       <div className="container mx-auto px-4">{children}</div>
     </section>

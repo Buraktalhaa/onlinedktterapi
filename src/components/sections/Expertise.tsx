@@ -34,21 +34,21 @@ export function Expertise() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-[2rem] bg-white p-8 border border-slate-100 shadow-xl shadow-slate-200/40 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10"
+              className="group relative overflow-hidden rounded-[2rem] bg-white p-8 border border-slate-100 shadow-xl shadow-slate-200/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10"
             >
-              <div className="absolute -right-4 -top-4 size-24 rounded-full bg-slate-50 opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="absolute -right-4 -top-4 size-24 rounded-full bg-slate-50 opacity-0 transition-opacity" />
 
               <div
-                className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl shadow-inner transition-transform group-hover:scale-110 group-hover:rotate-3 ${service.color}`}
+                className={`mb-6 flex h-14 w-14 items-center justify-center rounded-2xl shadow-inner transition-transform group-hover:scale-110 ${service.color}`}
               >
                 <Icon className={`h-7 w-7 ${service.iconColor}`} strokeWidth={1.5} />
               </div>
 
               {/* İçerik */}
-              <h4 className="mb-3 text-xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+              <h4 className="mb-3 text-xl font-bold text-slate-900">
                 {service.title}
               </h4>
-              <p className="text-sm leading-relaxed text-slate-500 group-hover:text-slate-600 transition-colors">
+              <p className="text-sm leading-relaxed text-slate-500">
                 {service.description}
               </p>
             </motion.div>

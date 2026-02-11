@@ -26,7 +26,7 @@ export function Hero() {
             {/* Badge */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-1.5 text-sm font-semibold text-teal-700">
               <CheckCircle className="h-4 w-4" />
-              Uzman Dil ve Konuşma Terapisti
+              Dil ve Konuşma Terapisti
             </div>
 
             {/* Başlık */}
