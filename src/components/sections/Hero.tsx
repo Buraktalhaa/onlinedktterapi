@@ -95,7 +95,7 @@ export function Hero() {
             <div className="relative aspect-4/5 overflow-hidden rounded-[3.5rem] border-12 border-white bg-slate-50 shadow-[0_20px_50px_rgba(15,23,42,0.1)]">
               <Image
                 src="/feyza-sahan-hero.jpeg"
-                alt="Feyza Şahan"
+                alt="Dkt. Feyza Şahan - Online Dil ve Konuşma Terapisti"
                 fill
                 priority
                 className="object-cover"
