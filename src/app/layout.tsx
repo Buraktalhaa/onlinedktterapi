@@ -4,7 +4,7 @@ import { Navbar } from "@/components/shared/Navbar";
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://feyzasahan.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dktfeyzasahan.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

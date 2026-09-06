@@ -7,7 +7,7 @@ import { WhoIsItFor } from "@/components/sections/WhoIsItFor";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Footer } from "@/components/Footer";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://feyzasahan.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dktfeyzasahan.com";
 
 const personSchema = {
   "@context": "https://schema.org",
