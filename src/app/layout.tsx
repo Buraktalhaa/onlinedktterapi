@@ -3,6 +3,7 @@ import { WhatsappButton } from "@/components/sections/WhatsappButton";
 import { Navbar } from "@/components/shared/Navbar";
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dktfeyzasahan.com";
 
@@ -91,6 +92,7 @@ export default function RootLayout({
           richColors
           closeButton
         />
+        <Analytics />
       </body>
     </html>
   );
