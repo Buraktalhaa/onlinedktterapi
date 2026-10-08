@@ -26,7 +26,7 @@ export function Hero() {
             {/* Badge */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-1.5 text-sm font-semibold text-teal-700">
               <CheckCircle className="h-4 w-4" />
-              Dil ve Konuşma Terapisti
+              Muğla Dil ve Konuşma Terapisti
             </div>
 
             {/* Başlık */}
@@ -39,8 +39,9 @@ export function Hero() {
 
             {/* Açıklama */}
             <p className="mb-10 mx-auto max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl lg:mx-0">
-              Merhaba, ben <strong>Feyza Şahan</strong>. Çocuk ve yetişkinlerde
-              dil ve konuşma bozukluklarına yönelik, bilimsel temelli ve kişiye
+              Merhaba, ben <strong>Feyza Şahan</strong>. Muğla ve Yatağan
+              dahil Türkiye&apos;nin her yerinden çocuk ve yetişkinlerde dil
+              ve konuşma bozukluklarına yönelik, bilimsel temelli ve kişiye
               özel online terapi süreçleri yürütüyorum.
             </p>
 
