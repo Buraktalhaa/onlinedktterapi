@@ -10,14 +10,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dktfeyzasahan.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Dkt. Feyza Şahan | Online Dil ve Konuşma Terapisti",
+    default: "Dkt. Feyza Şahan | Muğla Online Dil ve Konuşma Terapisti",
     template: "%s | Dkt. Feyza Şahan",
   },
   description:
-    "Dkt. Feyza Şahan, çocuk ve yetişkinlerde dil ve konuşma bozukluklarına yönelik bilimsel temelli online terapi hizmetleri sunar. Kekemelik, geç konuşma, otizm ve daha fazlası için ücretsiz ön görüşme alın.",
+    "Dkt. Feyza Şahan, Muğla ve Yatağan'da çocuk ve yetişkinlerde dil ve konuşma bozukluklarına yönelik bilimsel temelli online terapi hizmetleri sunar. Kekemelik, geç konuşma, otizm ve daha fazlası için ücretsiz ön görüşme alın.",
   keywords: [
     "Feyza Şahan",
     "Dkt Feyza Şahan",
+    "Muğla dil ve konuşma terapisti",
+    "Yatağan dil ve konuşma terapisti",
+    "Muğla konuşma terapisi",
+    "Yatağan konuşma terapisi",
     "dil ve konuşma terapisti",
     "online konuşma terapisi",
     "online dil terapisi",

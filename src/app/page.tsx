@@ -16,11 +16,16 @@ const personSchema = {
   honorificPrefix: "Dkt.",
   jobTitle: "Dil ve Konuşma Terapisti",
   description:
-    "Dkt. Feyza Şahan, çocuk ve yetişkinlerde dil ve konuşma bozukluklarına yönelik bilimsel temelli online terapi hizmetleri sunan uzman bir dil ve konuşma terapistidir.",
+    "Muğla merkezli, çocuk ve yetişkinlerde dil ve konuşma bozukluklarına yönelik bilimsel temelli online terapi hizmetleri sunan uzman bir dil ve konuşma terapistidir.",
   url: siteUrl,
   image: `${siteUrl}/feyza-sahan-hero.jpeg`,
   email: "dktfeyzasahan@gmail.com",
   telephone: "+905051245933",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Muğla",
+    addressCountry: "TR",
+  },
   sameAs: [
     "https://instagram.com/mugla.dilkonusma",
     "https://facebook.com/feyzasahan",
@@ -52,9 +57,9 @@ const personSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Dkt. Feyza Şahan | Online Dil ve Konuşma Terapisi",
+  name: "Dkt. Feyza Şahan | Muğla Online Dil ve Konuşma Terapisi",
   description:
-    "Çocuk ve yetişkinlerde dil ve konuşma bozukluklarına yönelik bilimsel temelli online terapi hizmetleri. Kekemelik, geç konuşma, otizm, artikülasyon bozukluğu ve afazi tedavileri.",
+    "Muğla, Yatağan ve Türkiye'nin her yerinden çocuk ve yetişkinlerde dil ve konuşma bozukluklarına yönelik bilimsel temelli online terapi hizmetleri. Kekemelik, geç konuşma, otizm, artikülasyon bozukluğu ve afazi tedavileri.",
   url: siteUrl,
   telephone: "+905051245933",
   email: "dktfeyzasahan@gmail.com",
@@ -62,10 +67,25 @@ const serviceSchema = {
   priceRange: "₺₺",
   openingHours: "Mo,Tu,We,Th,Fr,Sa 09:00-22:00",
   serviceType: "Dil ve Konuşma Terapisi",
-  areaServed: {
-    "@type": "Country",
-    name: "Türkiye",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Muğla",
+    addressCountry: "TR",
   },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Muğla",
+    },
+    {
+      "@type": "City",
+      name: "Yatağan",
+    },
+    {
+      "@type": "Country",
+      name: "Türkiye",
+    },
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Online Terapi Hizmetleri",
